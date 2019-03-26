@@ -1,0 +1,98 @@
+Udacity HTTP & Web Servers
+
+Lesson1
+
+HTTP: protocol of communication between web server and cliant
+ping is lower than HTTP
+
+Sever: just handling incoming requests.
+404: HTTP code for "Not Found", meaning that the resource the client asked for isn't there.
+
+URI: Uniform Resource Identifier, Web address.
+URL: Uniform Resource Locator.
+URI and URL are pretty close to the same thing; specifically, a URL is a URI for a resource on the network.
+
+Ex:
+https://en.wikipedia.org/wiki/Fish
+・https is the scheme;
+・en.wikipedia.org is the hostname;
+・and /wiki/Fish is the path.
+
+scheme: tells the client how to go about accessing the resource. Some URI schemes you've seen before include http, https, and file. File URIs tell the client to access a file on the local filesystem. HTTP and HTTPS URIs point to resources served by a web server.
+
+hostname: something like www.udacity.com or localhost. This tells the client which server to connect to.
+
+path: identifies a particular resource on a server.
+
+IP addresses: every piece of network traffic on the Internet is labeled with the IP addresses of the sending and receiving computers
+
+
+Hostname is translated into IP address via DSN(Domain Name Service)
+
+IPv4, an address like 127.0.0.1 or 216.58.194.164
+IPv6, such as 2607:f8b0:4005:804::2004
+
+packet: All of the network traffic that computers send and receive — everything from web requests, to login sessions, to file sharing — is split up into messages called packets. Each packet has the IP addresses of the computer that sent it, and the computer that receives it. And (with the exception of some low-level packets, such as ping) it also has the port number for the sender and recipient.
+
+IP addresses distinguish computers; port numbers distinguish programs on those computers.
+
+HTTP URIs imply a port number of 80
+HTTPS URIs imply a port number of 443
+
+
+<6:HTTP GET requests>
+"GET /readme.png HTTP/1.1" is the text of the request line that the browser sent to the server
+
+GET is the method or HTTP verb being used; this says what kind of request is being made. GET is the verb that clients use when they want a server to send a resource, such as a web page or image.
+
+/readme.png is the path of the resource being requested.
+
+HTTP/1.1 is the protocol of the request.
+
+<7: HTTP responses>
+ncat google.com 80
+GET / HTTP/1.1
+Host: google.com
+
+
+
+*Status Line
+HTTP/1.1 301 Moved Permanently
+
+*headers
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Date: Sun, 24 Mar 2019 14:14:23 GMT
+Expires: Tue, 23 Apr 2019 14:14:23 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+
+*response body
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+</BODY></HTML>
+
+
+Status Line: The status line tells the client whether the server understood the request, whether the server has the resource the client asked for, and how to proceed next. It also tells the client which dialect of HTTP the server is speaking.
+
+Status Code:
+1xx — Informational. The request is in progress or there's another step to take.
+2xx — Success! The request succeeded. The server is sending the data the client asked for.
+3xx — Redirection. The server is telling the client a different URI it should redirect to. The headers will usually contain a Location header with the updated URI. Different codes tell the client whether a redirect is permanent or temporary.
+4xx — Client error. The server didn't understand the client's request, or can't or won't fill it. Different codes tell the client whether it was a bad URI, a permissions problem, or another sort of error.
+5xx — Server error. Something went wrong on the server side.
+
+Headers: Headers are a sort of metadata for the response. They aren't displayed by browsers or other clients; instead, they tell the client various information about the response.
+
+A Content-type header indicates the kind of data that the server is sending.
+
+
+Response body
+
+

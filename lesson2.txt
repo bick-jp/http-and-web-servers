@@ -1,0 +1,38 @@
+<2. Python's http.server>
+there are three things the server needs to send in an HTTP response: a status code, some headers, and the response body
+
+
+<3. What about .encode()?>
+self.wfile.write method in the handler class expects to be given a bytes object. If you want to send a string over the HTTP connection, you have to encode the string into a bytes object. The encode method on strings translates the string into a bytes object.
+
+
+<4. The echo server>
+http://localhost:8000/spiders_from_mars#stardust
+
+The word stardust only shows up in a URI fragment above — it appears after the # sign in the second URI. Fragments aren't sent to the server as part of an HTTP GET request; they only affect the browser. So this is the correct answer.
+
+
+<5. Queries and quoting>
+https://www.google.com/search?q=gray+squirrel&tbm=isch
+
+The query part of the URI is the part after the ? mark. Conventionally, query parameters are written as key=value and separated by & signs. So the above URI has two query parameters, q and tbm, with the values gray+squirrel and isch.
+
+
+<6. HTML and forms>
+
+
+<7. GET and POST>
+idempotent. An action is idempotent if doing it twice (or more) produces the same result as doing it once. "Show me the search results for 'polar bear'" is an idempotent action, because doing it a second time just shows you the same results. "Add a polar bear to my shopping cart" is not, because if you do it twice, you end up with two polar bears.
+
+POST requests are not idempotent.
+
+When a browser submits a form as a POST request, it doesn't encode the form data in the URI path, the way it does with a GET request. Instead, it sends the form data in the request body, underneath the headers. The request also includes Content-Type and Content-Length headers, which we've previously only seen on HTTP responses.
+
+
+<8. A server for POST>
+
+<9. Post-Redirect-Get>
+
+<10. Making requests>
+
+<11. Using a JSON API>
