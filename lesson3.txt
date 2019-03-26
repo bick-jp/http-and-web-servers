@@ -1,3 +1,8 @@
 <2. Handling more requests>
 Concurrency: Being able to handle two ongoing tasks at the same time
 
+<3. Static content and more>
+
+<4. Cookies>
+Cookies are a way that a server can ask a browser to retain a piece of information, and send it back to the server when the browser makes subsequent requests.
+
